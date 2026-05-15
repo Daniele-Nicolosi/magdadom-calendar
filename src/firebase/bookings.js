@@ -25,6 +25,10 @@ export async function getBookings(houseId) {
     // "await" can only be used inside an async function, and it allows the code to pause until the promise is resolved
     // "getDocs(q)" executes the query and returns a snapshot of the matching documents
     const snapshot = await getDocs(q);
+
+    // "snapshot.docs" is an array of document snapshots that match the query
+    // "map" is used to iterate over each document snapshot and create a new array of booking objects
+    // "d.id" gets the ID of the document, and "d.data()" gets the data of the document as an object
     return snapshot.docs.map((d) => ({id: d.id, ...d.data() }));
 }
 
